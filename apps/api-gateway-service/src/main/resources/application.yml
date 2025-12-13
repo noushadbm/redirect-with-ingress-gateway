@@ -21,6 +21,12 @@ spring:
             - Path=/local/**
           filters:
             - StripPrefix=1
+        - id: auth-route
+          uri: http://192.168.0.170:9000/
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
 
 management:
   endpoints:
