@@ -1,0 +1,32 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      forwarded:
+        enabled: true
+      routes:
+        - id: api1-route
+          uri: http://192.168.0.170:8080/
+          predicates:
+            - Path=/api1/**
+          filters:
+            - StripPrefix=1
+        - id: local-route
+          uri: http://192.168.0.114:8080/
+          predicates:
+            - Path=/local/**
+          filters:
+            - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always

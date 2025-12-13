@@ -1,0 +1,60 @@
+# ======================
+# Java / Spring Boot
+# ======================
+target/
+build/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# ======================
+# Maven / Gradle
+# ======================
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+
+# ======================
+# IDEs
+# ======================
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Environment & Secrets
+# ======================
+.env
+.env.*
+application-*.yml
+application-*.yaml
+application-*.properties
+
+# ======================
+# Test / Coverage
+# ======================
+coverage/
+jacoco/
+*.exec
+
+# ======================
+# Logs
+# ======================
+logs/
+*.log
