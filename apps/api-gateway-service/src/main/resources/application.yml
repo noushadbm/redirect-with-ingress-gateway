@@ -10,7 +10,7 @@ spring:
         enabled: true
       routes:
         - id: api1-route
-          uri: http://192.168.0.170:8080/
+          uri: http://hello-world/
           predicates:
             - Path=/api1/**
           filters:
