@@ -22,7 +22,7 @@ spring:
           filters:
             - StripPrefix=1
         - id: auth-route
-          uri: http://192.168.0.170:9000/
+          uri: http://auth-server/
           predicates:
             - Path=/auth/**
           filters:
