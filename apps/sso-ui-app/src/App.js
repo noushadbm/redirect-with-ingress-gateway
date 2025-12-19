@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/gateway/sso-ui-app">
       <div className="App">
         <Routes>
           <Route path="/login" element={<Login />} />

@@ -2,6 +2,7 @@
   "name": "sso-ui-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/gateway/sso-ui-app",
   "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^1.6.0",
