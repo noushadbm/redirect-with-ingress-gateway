@@ -25,3 +25,15 @@
       kubectl logs -f deployment/hello-world -n dev
       kubectl logs -f deployment/gateway-service -n dev
    ```
+
+### Authentication Flow
+```
+[UI - app-frond-end] ---(/autherize)---> Ingress ----> gateway-service -----> Auth-Server
+[UI - auth-server  ] <-----------------------(302 - login page)-------------- Auth-Server
+[UI - auth-server  ] ------(/login)----> Ingress ----> gateway-service -----> Auth-Server
+[UI - app-frond-end] <------------------(302 - app-frond-end)---------------- Auth-Server
+[UI - app-frond-end] -------------------------------------------------------> app-back-end
+```
+
+
+
