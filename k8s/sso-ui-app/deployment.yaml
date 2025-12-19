@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sso-ui-app
+  namespace: dev
+  labels:
+    app: sso-ui-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sso-ui-app
+  template:
+    metadata:
+      labels:
+        app: sso-ui-app
+    spec:
+      containers:
+      - name: sso-ui-app
+        image: noushadbm/sso-ui-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
