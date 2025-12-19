@@ -27,6 +27,12 @@ spring:
             - Path=/auth/**
           filters:
             - StripPrefix=1
+        - id: sso-ui-app
+          uri: http://sso-ui-app/
+          predicates:
+            - Path=/sso-ui-app/**
+          filters:
+            - StripPrefix=1
 
 management:
   endpoints:
