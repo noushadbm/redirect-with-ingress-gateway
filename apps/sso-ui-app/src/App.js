@@ -1,7 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Login from './components/Login';
 import './App.css';
+
+function RedirectToLogin() {
+  const location = useLocation();
+  return <Navigate to={`/login${location.search}`} replace />;
+}
 
 function App() {
   return (
@@ -9,7 +14,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<RedirectToLogin />} />
         </Routes>
       </div>
     </Router>

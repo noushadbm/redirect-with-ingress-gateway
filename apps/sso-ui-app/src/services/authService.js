@@ -1,15 +1,21 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+// const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:9000';
+const API_BASE_URL = 'http://192.168.0.170/gateway/auth';
 
 // Configure axios to send cookies with requests
 axios.defaults.withCredentials = true;
 
 const authService = {
-    login: async (username, password) => {
+    login: async (username, password, continueUrl) => {
+        debugger;
         try {
+            const url = continueUrl 
+                ? `${API_BASE_URL}/api/auth/login?continueUrl=${encodeURIComponent(continueUrl)}`
+                : `${API_BASE_URL}/api/auth/login`;
+
             const response = await axios.post(
-                `${API_BASE_URL}/api/auth/login`,
+                url,
                 {
                     username,
                     password

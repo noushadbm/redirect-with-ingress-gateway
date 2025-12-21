@@ -19,19 +19,25 @@ function Login() {
         setLoading(true);
 
         try {
-            const response = await authService.login(username, password);
+            debugger;
+            // Get the redirect URL from query parameters
+            const params = new URLSearchParams(window.location.search);
+            const continueUrl = params.get('continue');
+            console.log('Continue URL:', continueUrl);
+            const response = await authService.login(username, password, continueUrl);
+            
 
             if (response.success) {
-                // Get the redirect URL from query parameters
-                const params = new URLSearchParams(window.location.search);
-                const continueUrl = params.get('continue');
-
-                if (continueUrl) {
+                if (response.redirectUrl) {
+                    // Redirect to the OAuth authorization URL
+                    window.location.href = response.redirectUrl;
+                } else if (continueUrl) {
                     // Redirect back to the OAuth authorization endpoint
                     window.location.href = continueUrl;
                 } else {
                     // Default redirect
-                    window.location.href = 'http://localhost:9000';
+                    //window.location.href = 'http://localhost:9000';
+                    window.location.href = 'http://192.168.0.170/gateway/auth';
                 }
             }
         } catch (err) {
