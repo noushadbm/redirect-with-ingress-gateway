@@ -3,6 +3,7 @@ package com.rayshan.backend.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -14,6 +15,9 @@ public class AuthClientService {
     private static final Logger log = LoggerFactory.getLogger(AuthClientService.class);
     private final RestClient restClient;
 
+    @Value("${app.config.sso.redirect-url}")
+    private String redirectUri;
+
     public AuthClientService(RestClient restClient) {
         this.restClient = restClient;
     }
@@ -24,7 +28,7 @@ public class AuthClientService {
         formData.add("grant_type", "authorization_code");
         formData.add("code", code);
         formData.add("state", state);
-        formData.add("redirect_uri", "http://localhost:3000/callback");
+        formData.add("redirect_uri", redirectUri);
 
         return restClient.post()
                 .uri("/oauth2/token")

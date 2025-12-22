@@ -39,6 +39,12 @@ spring:
             - Path=/oidc-client/**
           filters:
             - StripPrefix=1
+        - id: oidc-client-api
+          uri: http://oidc-client-api/
+          predicates:
+            - Path=/oidc-client-api/**
+          filters:
+            - StripPrefix=1
 
 management:
   endpoints:
